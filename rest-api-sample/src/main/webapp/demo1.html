@@ -1,0 +1,179 @@
+<!doctype html>
+<html class="no-js" lang="">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>DizPay - The Leading Blockchain Payment Gateway for Bitcoin and Ethereum.</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta content="telephone=no" name="format-detection" />
+      <link rel="apple-touch-icon" href="static/assets/images/favicon.png" type="image/x-icon">
+      <link rel="icon" href="static/assets/images/favicon.png" type="image/x-icon">
+   
+      <link rel="stylesheet" href="static/components/css/bootstrap.min.css">
+      <!-- animate css -->
+      <link rel="stylesheet" href="static/components/css/animate.css">
+      <link rel="stylesheet" href="static/components/css/font-awesome.min.css">
+      <link rel="stylesheet" href="static/components/css/style.css">
+      <link rel="stylesheet" href="static/assets/css/page.css">
+   </head>
+   <body class="stepbox_bg">
+      <div class="step_detailbox pr">
+         <div class="checkout_head clearfix">
+            <div class="checkout_head_logo">
+               <img src="static/assets/images/logo.png" alt="">
+            </div>
+            <div class="step_head_tit">
+               <div class="head_bigtit" title="DIZPAY">DIZPAY</div>
+               <div class="head_smalltit">The largest herbaceous <br>flowering plant </div>
+            </div>   
+         </div>
+         <div class="checkout_cntbox">
+            <h3 class="checkout_h3">Select currency</h3>
+            <div class="checkout_currencybox pr">
+               <ul class="checkout_currency">
+                  <li class="checkout_li">
+                     <i class="checkout_btc"></i>
+                     <div class="checkout_name">
+                        <p class="name_big">BTC</p>
+                        <P class="name_small">Bitcoin</P>
+                     </div>
+                     <span class="checkout_price c_green">$4500.45</span>
+                     <i class="fa fa-angle-right"></i>
+                  </li>
+                  <li class="checkout_li">
+                     <i class="checkout_eth"></i>
+                     <div class="checkout_name">
+                        <p class="name_big">ETH</p>
+                        <P class="name_small">Ethereum</P>
+                     </div>
+                     <span class="checkout_price c_green">$4500.45</span>
+                     <i class="fa fa-angle-right"></i>
+                  </li>
+                  <li class="checkout_li">
+                     <i class="checkout_usdt"></i>
+                     <div class="checkout_name">
+                        <p class="name_big">USDT</p>
+                        <P class="name_small">Tether</P>
+                     </div>
+                     <span class="checkout_price c_green">$4500.45</span>
+                     <i class="fa fa-angle-right"></i>
+                  </li>
+                  <li class="checkout_li">
+                     <i class="checkout_gusd"></i>
+                     <div class="checkout_name">
+                        <p class="name_big">GUSD</p>
+                        <P class="name_small">Gemini Dollar</P>
+                     </div>
+                     <span class="checkout_price c_red">$4500.45</span>
+                     <i class="fa fa-angle-right"></i>
+                  </li>
+                  <li class="checkout_li none">
+                     <i class="checkout_dash"></i>
+                     <div class="checkout_name">
+                        <p class="name_big">DASH</p>
+                        <P class="name_small">DASH</P>
+                     </div>
+                     <span class="checkout_price c_green">$4500.45</span>
+                     <i class="fa fa-angle-right"></i>
+                  </li>
+                  <li class="checkout_li none">
+                     <i class="checkout_ltc"></i>
+                     <div class="checkout_name">
+                        <p class="name_big">LTC</p>
+                        <P class="name_small">LTC</P>
+                     </div>
+                     <span class="checkout_price c_red">$4500.45</span>
+                     <i class="fa fa-angle-right"></i>
+                  </li>
+               </ul>
+               <div class="checkout_morebox">
+                  <div class="checkout_morebtn">
+                     <i class="fa fa-angle-down"></i>
+                     <i class="fa fa-angle-up"></i>
+                  </div>
+                  <p>More currency</p>
+               </div>
+            </div>
+         </div>
+         <div class="checkout_footbox">
+            <div class="foot_linebox">
+               <div class="foot_language pr">
+                  <div class="language">
+                     <span class="lng-in"><i class="cn"></i><span>中文</span><i class="fa fa-caret-down ml5"></i></span>
+                     <ul class="lng-out">
+                        <li><i class="en"></i>English</li>
+                        <li><i class="cn"></i>中文</li>
+                     </ul>
+                  </div>
+                  <p class="foot_info">Powered by DizPay.</p>
+               </div>
+            </div>
+         </div>
+         <div class="stepbox_layer"></div>
+         <div class="stepbox_dialog">
+            <p class="dialog_close"><i></i></p>
+            <div class="dialog_upgrade">
+               <i class="icon_upgrade"></i>
+               <p class="upgrade_tit">Bitcoin is upgrading.</p>
+               <p class="upgrade_time">2019/03/12 2:00 AM</p>
+            </div>
+            <div class="dialog_footxt">
+               <p>Estimates 8 hours and may vary, <br>please pay with other cryptocurrencies.</p>
+            </div>
+         </div>
+      </div>
+
+      <script src="static/components/js/vendor/jquery-3.2.1.min.js"></script>
+      <!-- bootstrap js -->
+      <script src="static/components/js/bootstrap.min.js"></script>
+      <script type="text/JavaScript">
+         $(function(){
+            $(".checkout_morebtn").on("click",function(){
+               $(this).closest(".checkout_currencybox").toggleClass("on");
+            });
+
+            $(".checkout_currency").on("click","li",function(){
+               $(".stepbox_layer").slideDown();
+               $(".stepbox_dialog").slideDown();
+            });
+
+            $(".stepbox_dialog").on("click",".dialog_close",function(){
+               $(".stepbox_layer").slideUp();
+               $(".stepbox_dialog").slideUp();
+            });
+
+            // 语言切换
+            $( ".lng-in" ).on("click",function(e) {
+               var self = $(this);
+               $(this).closest(".language").toggleClass("on");
+               $(document).one("click", function(){
+                  self.closest(".language").removeClass("on");
+               });
+               $(document).one("touchstart", function(){
+                  self.closest(".language").removeClass("on");
+               });
+               e.stopPropagation();
+            });
+
+            $(".lng-out").on("click","li",function(){
+               var val = $(this).text();
+               var classname = $(this).find("i").attr("class");
+               console.log(classname);
+               $( ".lng-in i:not(.fa-caret-down)" ).attr("class",classname);
+               $( ".lng-in span" ).text(val);
+               $(this).closest(".language").removeClass("on");
+            });
+
+            $(".lng-out li").on("touchstart",function(){
+               var val = $(this).text();
+               var classname = $(this).find("i").attr("class");
+               $( ".lng-in span" ).text(val);
+               $( ".lng-in i:not(.fa-caret-down)" ).attr("class",classname);
+               $( ".lng-in span" ).text(val);
+               $(this).closest(".language").removeClass("on");
+            });
+         });
+      </script>
+   </body>
+</html>

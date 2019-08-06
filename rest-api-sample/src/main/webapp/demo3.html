@@ -1,0 +1,116 @@
+<!doctype html>
+<html class="no-js" lang="">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>DizPay - The Leading Blockchain Payment Gateway for Bitcoin and Ethereum.</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta content="telephone=no" name="format-detection" />
+      <link rel="apple-touch-icon" href="static/assets/images/favicon.png" type="image/x-icon">
+      <link rel="icon" href="static/assets/images/favicon.png" type="image/x-icon">
+   
+      <link rel="stylesheet" href="static/components/css/bootstrap.min.css">
+      <!-- animate css -->
+      <link rel="stylesheet" href="static/components/css/animate.css">
+      <link rel="stylesheet" href="static/components/css/font-awesome.min.css">
+      <link rel="stylesheet" href="static/components/css/style.css">
+      <link rel="stylesheet" href="static/components/css/intlTelInput.css">
+      <link rel="stylesheet" href="static/assets/css/page.css">
+   </head>
+   <body class="stepbox_bg body_minheight">
+      <div class="step_detailbox pr">
+         <div class="checkout_head clearfix">
+            <div class="checkout_head_logo">
+               <img src="static/assets/images/logo.png" alt="">
+            </div>
+            <div class="step_head_tit">
+               <div class="head_bigtit" title="DIZPAY">DIZPAY</div>
+               <div class="head_smalltit">The largest herbaceous <br>flowering plant </div>
+            </div>   
+         </div>
+         <div class="checkout_cntbox">
+            <h3 class="checkout_h3">Notifications & Refund</h3>
+            <div class="checkout_formbox">
+               <div class="form_item">
+                  <p class="form_name">Name</p>
+                  <div class="form_input pr">
+                     <input type="text" class="checkout_input pl-40" value="name@address.com">
+                     <i class="fa fa-user"></i>
+                  </div>
+               </div>
+               <div class="form_item">
+                  <p class="form_name">Tel</p>
+                  <div class="form_input">
+                     <input type="tel" class="checkout_input" id="phone">
+                  </div>
+               </div>
+               <div class="form_item">
+                  <a href="demo2.html" class="form_btn">Next</a>
+               </div>
+               <div class="form_item">
+                  <p class="form_explain">By giving my email or mobile, I give explicit <br>consent to DizPay to use it to contact me<br> about payment issues.</p>
+               </div>
+            </div>
+         </div>
+         <div class="checkout_footbox">
+            <div class="foot_linebox">
+               <div class="foot_language pr">
+                  <div class="language">
+                     <span class="lng-in"><i class="cn"></i><span>中文</span><i class="fa fa-caret-down ml5"></i></span>
+                     <ul class="lng-out">
+                        <li><i class="en"></i>English</li>
+                        <li><i class="cn"></i>中文</li>
+                     </ul>
+                  </div>
+                  <p class="foot_info">Powered by DizPay.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="static/components/js/vendor/jquery-3.2.1.min.js"></script>
+      <!-- bootstrap js -->
+      <script src="static/components/js/bootstrap.min.js"></script>
+      <script src="static/components/js/intlTelInput.js"></script>
+      <script type="text/JavaScript">
+         $(function(){
+            var input = document.querySelector("#phone");
+            window.intlTelInput(input, {
+               preferredCountries: ['cn', 'us'],
+               separateDialCode: true
+             });
+
+            // 语言切换
+            $( ".lng-in" ).on("click",function(e) {
+               var self = $(this);
+               $(this).closest(".language").toggleClass("on");
+               $(document).one("click", function(){
+                  self.closest(".language").removeClass("on");
+               });
+               $(document).one("touchstart", function(){
+                  self.closest(".language").removeClass("on");
+               });
+               e.stopPropagation();
+            });
+
+            $(".lng-out").on("click","li",function(){
+               var val = $(this).text();
+               var classname = $(this).find("i").attr("class");
+               console.log(classname);
+               $( ".lng-in i:not(.fa-caret-down)" ).attr("class",classname);
+               $( ".lng-in span" ).text(val);
+               $(this).closest(".language").removeClass("on");
+            });
+
+            $(".lng-out li").on("touchstart",function(){
+               var val = $(this).text();
+               var classname = $(this).find("i").attr("class");
+               $( ".lng-in span" ).text(val);
+               $( ".lng-in i:not(.fa-caret-down)" ).attr("class",classname);
+               $( ".lng-in span" ).text(val);
+               $(this).closest(".language").removeClass("on");
+            });
+         });
+      </script>
+   </body>
+</html>
