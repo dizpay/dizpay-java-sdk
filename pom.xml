@@ -8,8 +8,8 @@
     <artifactId>dizpay-api</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>rest-api-sdk</module>
-        <module>rest-api-sample</module>
+        <module>sdk</module>
+        <module>sample</module>
     </modules>
 
     <packaging>pom</packaging>

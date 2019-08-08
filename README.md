@@ -19,13 +19,12 @@ Here are few type api in the SDK:
 
 # Usage
 
-The [sample](./rest-api-sample) are good place to start.
+The [sample](./sample) are good place to start.
 
 Modify the configuration information of app_id and app_key in com.dizpay.demo.config.DizPayConfig.java
 ```java
     public static final String APP_ID = "YOUR_APP_ID";
     public static final String APP_KEY = "YOUR_APP_KEY";
-    public static final String CHECK_OUT_URL = "https://checkout.dizpay.com/api/invoice";
 ```
 
 To make [API](https://www.dizpay.com/en/docs) calls:
@@ -142,13 +141,13 @@ You can create an api instance in the following way
 ```java
     <dependency>
         <groupId>com.dizpay.api</groupId>
-        <artifactId>rest-api-sdk</artifactId>
+        <artifactId>sdk</artifactId>
         <version>1.0.0</version>
     </dependency>
 ```
 
 ```java
-    rest-api-sdk.jar
+    sdk.jar
 ```
 
 

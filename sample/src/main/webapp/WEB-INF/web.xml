@@ -3,15 +3,15 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>rest-api-sample Application</display-name>
+  <display-name>sample Application</display-name>
 
   <servlet>
     <servlet-name>CheckOutServlet</servlet-name>
-    <servlet-class>com.dizpay.demo.servlet.CheckOutServlet</servlet-class>
+    <servlet-class>com.dizpay.sample.servlet.CheckOutServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>com.dizpay.demo.servlet.IndexServlet</servlet-class>
+    <servlet-class>com.dizpay.sample.servlet.IndexServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

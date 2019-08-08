@@ -1,4 +1,4 @@
-package com.dizpay.demo.servlet;
+package com.dizpay.sample.servlet;
 
 import com.alibaba.fastjson.JSONObject;
 import com.dizpay.api.DizpayClient;
@@ -6,10 +6,9 @@ import com.dizpay.api.common.RestResult;
 import com.dizpay.api.impl.DefaultDizpayClient;
 import com.dizpay.api.request.checkout.CheckOutInvoiceRequest;
 import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
-import com.dizpay.demo.config.DizPayConfig;
+import com.dizpay.sample.config.DizPayConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * check out servlet

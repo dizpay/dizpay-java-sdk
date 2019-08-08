@@ -41,13 +41,14 @@
                <li class="active">Customize</li>
             </ul>
             <div class="card-input pr">
-               <input type="text" name="" placeholder="请输入金额">
+               <input type="text" id="realAmount" placeholder="请输入金额">
                <span class="card-input-unit">USD</span>
             </div>
             <div class="card-button">
-               <a href="./checkOut" class="card-btn">Buy</a>
+               <a href="javascript:;" id="buy" class="card-btn">Buy</a>
             </div>
          </div>
+         <input type="hidden" id="amount" name="amount">
          <div class="checkout_footbox">
             <div class="foot_linebox">
                <div class="foot_language pr">
@@ -111,7 +112,26 @@
                   $(".card-input").removeClass("none");
                }else{
                   $(".card-input").addClass("none");
+                  if (i==0) {
+                     $("#amount").val("10");
+                  } else if(i == 1) {
+                     $("#amount").val("20");
+                  } else if(i == 2) {
+                     $("#amount").val("30");
+                  } else if(i == 3) {
+                     $("#amount").val("50");
+                  } else if(i == 4) {
+                     $("#amount").val("100");
+                  }
                }
+            });
+
+            $( "#buy" ).on("click",function(e) {
+               var amount = $("#amount").val();
+               if (amount == '' || amount == null) {
+                  amount = $("#realAmount").val();
+               }
+               window.location.href = "./checkOut?amount=" + amount;
             });
 
 

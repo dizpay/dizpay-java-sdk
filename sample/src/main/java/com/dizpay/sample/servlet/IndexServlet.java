@@ -1,4 +1,4 @@
-package com.dizpay.demo.servlet;
+package com.dizpay.sample.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

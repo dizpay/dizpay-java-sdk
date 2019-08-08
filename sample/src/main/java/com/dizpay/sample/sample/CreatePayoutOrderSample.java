@@ -1,13 +1,11 @@
-package com.dizpay.demo.sample;
+package com.dizpay.sample.sample;
 
 import com.dizpay.api.DizpayClient;
 import com.dizpay.api.common.RestResult;
 import com.dizpay.api.impl.DefaultDizpayClient;
-import com.dizpay.api.request.CreateChargeOrderRequest;
 import com.dizpay.api.request.payout.CreatePayoutOrderRequest;
-import com.dizpay.api.response.CreateChargeOrderResponse;
 import com.dizpay.api.response.payout.CreatePayoutOrderResponse;
-import com.dizpay.demo.config.DizPayConfig;
+import com.dizpay.sample.config.DizPayConfig;
 
 import java.util.UUID;
 

@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dizpay.api</groupId>
-    <artifactId>rest-api-sdk</artifactId>
+    <artifactId>sdk</artifactId>
     <version>1.0.0</version>
 
     <dependencies>

@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rest-api-sample</artifactId>
+    <artifactId>sample</artifactId>
     <packaging>war</packaging>
 
-    <name>rest-api-sample</name>
+    <name>sample</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +23,7 @@
     <dependencies>
         <dependency>
             <groupId>com.dizpay.api</groupId>
-            <artifactId>rest-api-sdk</artifactId>
+            <artifactId>sdk</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
@@ -34,7 +34,7 @@
     </dependencies>
 
     <build>
-        <finalName>rest-api-sample</finalName>
+        <finalName>sample</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
