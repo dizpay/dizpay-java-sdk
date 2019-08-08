@@ -4,15 +4,16 @@ import com.dizpay.api.common.RestResult;
 import com.dizpay.api.request.CancelOrderRequest;
 import com.dizpay.api.request.CreateChargeOrderRequest;
 import com.dizpay.api.request.QueryOrderRequest;
+import com.dizpay.api.request.checkout.CheckOutInvoiceRequest;
 import com.dizpay.api.request.payout.CreatePayoutOrderRequest;
 import com.dizpay.api.request.payout.PayOrderRequest;
 import com.dizpay.api.request.rates.CryptocurrencyRequest;
 import com.dizpay.api.response.CancelOrderResponse;
 import com.dizpay.api.response.CreateChargeOrderResponse;
 import com.dizpay.api.response.QueryOrderResponse;
+import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
 import com.dizpay.api.response.payout.CreatePayoutOrderResponse;
 import com.dizpay.api.response.payout.PayOrderResponse;
-import com.dizpay.api.response.rates.CryptocurrencyResponse;
 
 /**
  * dizpay api
@@ -57,6 +58,14 @@ public interface DizpayClient {
      * @throws Exception
      */
     RestResult<PayOrderResponse> payOrder(PayOrderRequest payOrderRequest) throws Exception;
+
+    /**
+     * checkout invoice api
+     * @param checkOutRequest
+     * @return
+     * @throws Exception
+     */
+    RestResult<CheckOutInvoiceResponse> checkoutInvoice(CheckOutInvoiceRequest checkOutRequest) throws Exception;
 
     /**
      * cryptocurrency rates info

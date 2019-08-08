@@ -2,6 +2,7 @@ package com.dizpay.api.common;
 
 public class Constants {
     public static final String BASE_URI = "https://api.dizpay.com/v2/";
+    public static final String CHECK_OUT_BASE_URI = "https://checkout.dizpay.com/v1/";
 
     /**
      * charge order
@@ -20,4 +21,9 @@ public class Constants {
      * rates
      */
     public static final String CRYPTOCURRENCY_ENDPOINT = "member/rates/cryptocurrency";
+
+    /**
+     * checkout api
+     */
+    public static final String CHECK_OUT_INVOICE_ENDPOINT = "invoice";
 }

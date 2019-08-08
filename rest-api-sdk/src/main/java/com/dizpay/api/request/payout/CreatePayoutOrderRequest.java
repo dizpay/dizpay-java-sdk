@@ -9,30 +9,30 @@ import lombok.Data;
 @Data
 public class CreatePayoutOrderRequest {
     /**
-     * your app_id
+     * required,your app_id
      */
     @JSONField(name = "app_id")
     private String appId;
     /**
-     * order number(global uniqueness)
+     * required,order number(global uniqueness)
      */
     private String number;
     /**
-     * signature
+     * required,signature
      */
     private String signature;
     /**
-     * currency code
+     * required,currency code
      */
     @JSONField(name = "currency_code")
     private String currencyCode;
     /**
-     * optional（0 or 1），default value is 0，0:not token currency，1:token
+     * required,optional（0 or 1），default value is 0，0:not token currency，1:token
      */
     @JSONField(name = "erc20_token")
     private int erc20Token = 0;
     /**
-     * currency amount
+     * required,currency amount
      */
     private String amount;
     /**

@@ -8,6 +8,9 @@ import lombok.Data;
  */
 @Data
 public class CryptocurrencyRequest {
+    /**
+     * optional,currency list
+     */
     @JSONField(name = "currency_list")
     private String currencyList;
 }

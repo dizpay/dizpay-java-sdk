@@ -24,7 +24,7 @@ public class DizpaySignature {
             parametersMap.put("app_id", appId);
             parametersMap.put("app_key", appKey);
             parametersMap.remove("signature");
-            String url = formatUrlMap(parametersMap, false, false);
+            String url = formatUrlMap(parametersMap);
             signature = MD5Encode(url);
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,45 +92,26 @@ public class DizpaySignature {
      * Implementation steps: <br>
      *
      * @param paraMap    Map object to sort
-     * @param urlEncode  Do you need URLENCODE?
-     * @param keyToLower Do you need to convert Key to all lowercase?
-     *                   true:Key is converted to lowercase，false:Not converting
      * @return
      */
-    public static String formatUrlMap(Map<String, String> paraMap, boolean urlEncode, boolean keyToLower) {
+    public static String formatUrlMap(Map<String, String> paraMap) {
         String buff = "";
-        Map<String, String> tmpMap = paraMap;
+        List<String> paraList = new ArrayList<String>();
         try {
-            List<Map.Entry<String, String>> infoIds = new ArrayList<Map.Entry<String, String>>(tmpMap.entrySet());
+            if (null == paraMap) {
+                return null;
+            }
+            for (Map.Entry<String, String> entry : paraMap.entrySet()) {
+                if (StringUtils.isBlank(entry.getValue()) || "null".equalsIgnoreCase(entry.getValue())) {
+                    continue;
+                }
+                String pair = entry.getKey() + "=" + entry.getValue();
+                paraList.add(pair);
+            }
             // Sort all incoming parameters by ASCII code of the field name from small to large (dictionary order)
-            Collections.sort(infoIds, new Comparator<Map.Entry<String, String>>() {
-
-                @Override
-                public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
-                    return (o1.getKey()).toString().compareTo(o2.getKey());
-                }
-            });
-            // Construct a URL key-value pair format
-            StringBuilder buf = new StringBuilder();
-            for (Map.Entry<String, String> item : infoIds) {
-                if (StringUtils.isNotBlank(item.getKey())) {
-                    String key = item.getKey();
-                    String val = item.getValue();
-                    if (urlEncode) {
-                        val = URLEncoder.encode(val, "utf-8");
-                    }
-                    if (keyToLower) {
-                        buf.append(key.toLowerCase() + "=" + val);
-                    } else {
-                        buf.append(key + "=" + val);
-                    }
-                    buf.append("&");
-                }
-            }
-            buff = buf.toString();
-            if (buff.isEmpty() == false) {
-                buff = buff.substring(0, buff.length() - 1);
-            }
+            Collections.sort(paraList);
+            // join "key=value" with "&"
+            buff = StringUtils.join(paraList, "&");
         } catch (Exception e) {
             e.printStackTrace();
             return null;

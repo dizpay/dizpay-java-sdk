@@ -9,12 +9,14 @@ import com.dizpay.api.common.StatusCodeEnum;
 import com.dizpay.api.request.CancelOrderRequest;
 import com.dizpay.api.request.CreateChargeOrderRequest;
 import com.dizpay.api.request.QueryOrderRequest;
+import com.dizpay.api.request.checkout.CheckOutInvoiceRequest;
 import com.dizpay.api.request.payout.CreatePayoutOrderRequest;
 import com.dizpay.api.request.payout.PayOrderRequest;
 import com.dizpay.api.request.rates.CryptocurrencyRequest;
 import com.dizpay.api.response.CancelOrderResponse;
 import com.dizpay.api.response.CreateChargeOrderResponse;
 import com.dizpay.api.response.QueryOrderResponse;
+import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
 import com.dizpay.api.response.payout.CreatePayoutOrderResponse;
 import com.dizpay.api.response.payout.PayOrderResponse;
 import com.dizpay.api.util.DizpaySignature;
@@ -135,6 +137,24 @@ public class DefaultDizpayClient implements DizpayClient {
     }
 
     @Override
+    public RestResult<CheckOutInvoiceResponse> checkoutInvoice(CheckOutInvoiceRequest checkOutRequest) throws Exception {
+        // 1.verify request object
+        JSONObject errorObj = new JSONObject();
+        if (checkOutRequest == null) {
+            errorObj.put("checkOutRequest", "checkOutRequest does not exist");
+            return RestResult.error(ErrorCodeConstants.FIELD_NOT_EXIST, errorObj);
+        }
+        // 2.get the signature value
+        String signature = DizpaySignature.signature(checkOutRequest, this.appId, this.appKey);
+        checkOutRequest.setAppId(this.appId);
+        checkOutRequest.setSignature(signature);
+
+        // 3.send request to dizpay
+        Response response = HttpClientUtil.httpPost(Constants.CHECK_OUT_BASE_URI + Constants.CHECK_OUT_INVOICE_ENDPOINT, JSONObject.toJSONString(checkOutRequest));
+        return assembleRsp(response, CheckOutInvoiceResponse.class);
+    }
+
+    @Override
     public RestResult cryptocurrency(CryptocurrencyRequest cryptocurrencyRequest) throws Exception {
         // 1.verify request object
         JSONObject errorObj = new JSONObject();
@@ -168,7 +188,6 @@ public class DefaultDizpayClient implements DizpayClient {
         if (response != null) {
             int statusCode = response.code();
             String rspStr = response.body().string();
-            System.out.println(rspStr);
             // according to statusCode do next step
             if (StatusCodeEnum.OK.getCode() == statusCode) {
                 Object createChargeOrderResponse = JSONObject.parseObject(rspStr, cls);

@@ -1,14 +1,14 @@
-package com.dizpay.demo.model;
+package com.dizpay.api.response.checkout;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * checkout model
+ * checkout res
  */
 @Data
-public class CheckOutResponse implements Serializable {
+public class CheckOutInvoiceResponse implements Serializable {
     /**
      * invoiceId
      */
