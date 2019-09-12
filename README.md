@@ -28,66 +28,64 @@ The DizPay API requires the following configuration changes before you can use i
 
 Set the App ID and key parameters in `com.dizpay.demo.config.DizPayConfig.java` before your first API call.  Just make sure you you do not accidently reveal this information in any user vieable request or response. :
 
-  public static final String APP\_ID = "YOUR\_APP\_ID";'
-  public static final String APP\_KEY = "YOUR\_APP\_KEY&quot";
+    public static final String APP\_ID = "YOUR\_APP\_ID";'
+    public static final String APP\_KEY = "YOUR\_APP\_KEY&quot";
 
 You should then add the following package to your application. It includes most of the API calls in the SDK.
 
-  package com.dizpay.demo.servlet;
-  import com.alibaba.fastjson.JSONObject;
-  import com.dizpay.api.DizpayClient;
-  import com.dizpay.api.common.RestResult;
-  import com.dizpay.api.impl.DefaultDizpayClient;
-  import com.dizpay.api.request.checkout.CheckOutInvoiceRequest;
-  import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
-  import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
-  import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
-  import com.dizpay.demo.config.DizPayConfig;
-  import org.apache.commons.lang3.StringUtils;
-  import org.apache.commons.lang3.time.DateFormatUtils;
-  import org.apache.commons.lang3.time.DateUtils;
-  import javax.servlet.ServletException;
-  import javax.servlet.http.HttpServlet;
-  import javax.servlet.http.HttpServletRequest;
-  import javax.servlet.http.HttpServletResponse;
-  import java.io.IOException;
-  import java.util.Date;
-  import java.util.UUID;
-  \* check out servlet     */
-
-  publicclassCheckOutServletextendsHttpServlet {
-    @Override
-
-    protectedvoiddoPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      doGet(request, response);
-    }
-
-    @Override
-
-    protectedvoiddoGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      // accept amount
-      String amount = request.getParameter("amount";
-      if (StringUtils.isBlank(amount)) {
-        amount ="0.1";
+    package com.dizpay.demo.servlet;
+    import com.alibaba.fastjson.JSONObject;
+    import com.dizpay.api.DizpayClient;
+    import com.dizpay.api.common.RestResult;
+    import com.dizpay.api.impl.DefaultDizpayClient;
+    import com.dizpay.api.request.checkout.CheckOutInvoiceRequest;
+    import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
+    import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
+    import com.dizpay.api.response.checkout.CheckOutInvoiceResponse;
+    import com.dizpay.demo.config.DizPayConfig;
+    import org.apache.commons.lang3.StringUtils;
+    import org.apache.commons.lang3.time.DateFormatUtils;
+    import org.apache.commons.lang3.time.DateUtils;
+    import javax.servlet.ServletException;
+    import javax.servlet.http.HttpServlet;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.io.IOException;
+    import java.util.Date;
+    import java.util.UUID;
+    \* check out servlet     */
+  
+    publicclassCheckOutServletextendsHttpServlet {
+      @Override
+      protectedvoiddoPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
       }
-      // assemble checkoutModel parameters
-
-      CheckOutInvoiceRequest checkOutInvoiceRequest =new CheckOutInvoiceRequest();
-      checkOutInvoiceRequest.setOrderNumber(DateFormatUtils.format(new Date(), "yyyyMMddHHmmss"));
-      checkOutInvoiceRequest.setName("DizPay Inc.");
-      checkOutInvoiceRequest.setDescription("Add crypto to your account.");
-      checkOutInvoiceRequest.setLogoUrl("https://cdn.shopifycloud.com/hatchful-web/assets/c3a241ae6d1e03513dfed6f5061f4a4b.png");
-      checkOutInvoiceRequest.setPayerInfo("email");
-      checkOutInvoiceRequest.setPricingType("fixed\_price");
-      checkOutInvoiceRequest.setCurrency("USD");
-      checkOutInvoiceRequest.setRate("huobi");
-      checkOutInvoiceRequest.setAmount(amount);
-      checkOutInvoiceRequest.setCrypto("USDC,TUSD,PAX,GUSD,USDT,ETH,BTC,LTC,DASH");
-      checkOutInvoiceRequest.setLocale("auto");
-      checkOutInvoiceRequest.setSuccessUrl("https://example.com/diz-pay-result?type=success");
-      checkOutInvoiceRequest.setCancelUrl("https://example.com/diz-pay-result?type=failed");
-      checkOutInvoiceRequest.setNotifyUrl("https://demo.dizpay.com/webhook")
-      checkOutInvoiceRequest.setExtra("another-params");
+    
+      @Override
+      protectedvoiddoGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // accept amount
+        String amount = request.getParameter("amount";
+        if (StringUtils.isBlank(amount)) {
+          amount ="0.1";
+        }
+        // assemble checkoutModel parameters
+        
+        CheckOutInvoiceRequest checkOutInvoiceRequest =new CheckOutInvoiceRequest();
+        checkOutInvoiceRequest.setOrderNumber(DateFormatUtils.format(new Date(), "yyyyMMddHHmmss"));
+        checkOutInvoiceRequest.setName("DizPay Inc.");
+        checkOutInvoiceRequest.setDescription("Add crypto to your account.");
+        checkOutInvoiceRequest.setLogoUrl("https://cdn.shopifycloud.com/hatchful-web/assets/c3a241ae6d1e03513dfed6f5061f4a4b.png");
+        checkOutInvoiceRequest.setPayerInfo("email");
+        checkOutInvoiceRequest.setPricingType("fixed\_price");
+        checkOutInvoiceRequest.setCurrency("USD");
+        checkOutInvoiceRequest.setRate("huobi");
+        checkOutInvoiceRequest.setAmount(amount);
+        checkOutInvoiceRequest.setCrypto("USDC,TUSD,PAX,GUSD,USDT,ETH,BTC,LTC,DASH");
+        checkOutInvoiceRequest.setLocale("auto");
+        checkOutInvoiceRequest.setSuccessUrl("https://example.com/diz-pay-result?type=success");
+        checkOutInvoiceRequest.setCancelUrl("https://example.com/diz-pay-result?type=failed");
+        checkOutInvoiceRequest.setNotifyUrl("https://demo.dizpay.com/webhook")
+        checkOutInvoiceRequest.setExtra("another-params");
 
       // DizpayClient instance
 
@@ -111,25 +109,24 @@ This sample package has most of the API calls you will need to use DizPay. To us
 
 ### Example (_Create change order_)
 
-  publicstaticvoid main(String[] args) {
-    DizpayClient dizpayClient =new DefaultDizpayClient(DizPayConfig.APP\_ID, DizPayConfig.APP\_KEY);
-
-    CreateChargeOrderRequest createChargeOrderRequest =new CreateChargeOrderRequest();
-    createChargeOrderRequest.setNumber(UUID.randomUUID().toString());
-    createChargeOrderRequest.setAmount(&quot;0.1&quot;);
-    createChargeOrderRequest.setCurrencyCode(&quot;USDT&quot;);
-
-    try {
-      RestResult<CreateChargeOrderResponse> chargeOrderResponseRestResult = dizpayClient.createChargeOrder(createChargeOrderRequest);
-
-      if (chargeOrderResponseRestResult !=null&amp;&amp; chargeOrderResponseRestResult.getData() !=null) {
-        CreateChargeOrderResponse createChargeOrderResponse = chargeOrderResponseRestResult.getData();
-        System.out.println(createChargeOrderResponse);
+    publicstaticvoid main(String[] args) {
+      DizpayClient dizpayClient =new DefaultDizpayClient(DizPayConfig.APP_ID, DizPayConfig.APP_KEY);
+      
+      CreateChargeOrderRequest createChargeOrderRequest =new CreateChargeOrderRequest();
+      createChargeOrderRequest.setNumber(UUID.randomUUID().toString());
+      createChargeOrderRequest.setAmount("0.1");
+      createChargeOrderRequest.setCurrencyCode("USDT");
+      
+      try {
+        RestResult<CreateChargeOrderResponse> chargeOrderResponseRestResult = dizpayClient.createChargeOrder(createChargeOrderRequest)   
+        if (chargeOrderResponseRestResult !=null && chargeOrderResponseRestResult.getData() !=null) {
+          CreateChargeOrderResponse createChargeOrderResponse = chargeOrderResponseRestResult.getData();
+          System.out.println(createChargeOrderResponse);
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
-    } catch (Exception e) {
-      e.printStackTrace();
     }
-  }
 
 ### Rate limiting
 
@@ -176,25 +173,25 @@ To make API calls, you must first create an API instance, and to do that, you mu
 
 The following code will load the necessary SDK dependencies into your application.
 
-  <dependency>
-    <groupId>com.dizpay.api</groupId>
-    <artifactId>sdk</artifactId>
-    <version>1.0.0</version>
-  </dependency>
-
-  sdk.jar
+    <dependency>
+      <groupId>com.dizpay.api</groupId>
+      <artifactId>sdk</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    
+    sdk.jar
 
 ### Starting the DisPay Client
 
 `DizpayClient` serves are your interface to the DizPay API. Create it by passing your app ID and key to the `DefaultDizpayClient` constructor as arguments.
 
-  DizpayClient dizpayClient = new DefaultDizpayClient("YOUR_APP_ID", "YOUR_APP_KEY>);
+    DizpayClient dizpayClient = new DefaultDizpayClient("YOUR_APP_ID", "YOUR_APP_KEY>);
 
 ### Signature
 
 A **signature** lets you perform non-empty judgements, sort through fields, and MD% encrypt request parameters.
 
-  String signature = DizpaySignature.signature(requestModel, "YOUR_APP_ID", "YOUR_APP_KEY");
+    String signature = DizpaySignature.signature(requestModel, "YOUR_APP_ID", "YOUR_APP_KEY");
 
 #### Tips
 
@@ -212,12 +209,12 @@ A **payment (charge) order** handles outside payment requests. It adds the recei
 
 ### Create a Payment Order
 
-  CreateChargeOrderRequest createChargeOrderRequest = new CreateChargeOrderRequest();
-  createChargeOrderRequest.setNumber(UUID.randomUUID().toString()); //order number
-  createChargeOrderRequest.setAmount("0.1"); // Sets amount
-  createChargeOrderRequest.setCurrencyCode("USDT"); //Sets currency code
-
-  RestResult<CreateChargeOrderResponse> chargeOrderResponseRestResult = dizpayClient.createChargeOrder(createChargeOrderRequest);
+    CreateChargeOrderRequest createChargeOrderRequest = new CreateChargeOrderRequest();
+    createChargeOrderRequest.setNumber(UUID.randomUUID().toString()); //order number
+    createChargeOrderRequest.setAmount("0.1"); // Sets amount
+    createChargeOrderRequest.setCurrencyCode("USDT"); //Sets currency code
+    
+    RestResult<CreateChargeOrderResponse> chargeOrderResponseRestResult = dizpayClient.createChargeOrder(createChargeOrderRequest);
 
 #### Parameters
 
@@ -259,11 +256,11 @@ Creating a charge order will return the following data
 
 Return information on an order based on its order number
 
-  String number = "6887623c-e756-4a20-b202-609b5a5b4a5e";  // order number
-  QueryOrderRequest queryOrderRequest = new QueryOrderRequest();
-  queryOrderRequest.setNumber(number);
+    String number = "6887623c-e756-4a20-b202-609b5a5b4a5e";  // order number
+    QueryOrderRequest queryOrderRequest = new QueryOrderRequest();
+    queryOrderRequest.setNumber(number);
 
-  RestResult<QueryOrderResponse> queryOrderResponseRestResult = dizpayClient.queryOrder(queryOrderRequest);
+    RestResult<QueryOrderResponse> queryOrderResponseRestResult = dizpayClient.queryOrder(queryOrderRequest);
 
 #### Parameters
 
@@ -297,11 +294,11 @@ Return information on an order based on its order number
 
 Cancels the selected order.
 
-  String number = "6887623c-e756-4a20-b202-609b5a5b4a5e";
-  CancelOrderRequest cancelOrderRequest = new CancelOrderRequest();
-  cancelOrderRequest.setNumber(number);
+    String number = "6887623c-e756-4a20-b202-609b5a5b4a5e";
+    CancelOrderRequest cancelOrderRequest = new CancelOrderRequest();
+    cancelOrderRequest.setNumber(number);
 
-  RestResult<CancelOrderResponse> cancelOrderResponseRestResult = dizpayClient.cancelOrder(cancelOrderRequest);
+    RestResult<CancelOrderResponse> cancelOrderResponseRestResult = dizpayClient.cancelOrder(cancelOrderRequest);
 
 #### Parameters
 
@@ -339,13 +336,13 @@ A **payout order** processes payouts and withdrawal transactions. Also called a 
 
 Before you create a payout order, make sure you have enough balance in your wallet to cover the transaction.
 
-  CreatePayoutOrderRequest createPayoutOrderRequest = new CreatePayoutOrderRequest();
-  createPayoutOrderRequest.setNumber("payout_"+UUID.randomUUID().toString());
-  createPayoutOrderRequest.setAmount("0.1";
-  createPayoutOrderRequest.setCurrencyCode("USDT");
-  createPayoutOrderRequest.setToAddress("1u1dAwvBcF92sAwBPgNDK3ysbWm3aTE8U");
+    CreatePayoutOrderRequest createPayoutOrderRequest = new CreatePayoutOrderRequest();
+    createPayoutOrderRequest.setNumber("payout_"+UUID.randomUUID().toString());
+    createPayoutOrderRequest.setAmount("0.1";
+    createPayoutOrderRequest.setCurrencyCode("USDT");
+    createPayoutOrderRequest.setToAddress("1u1dAwvBcF92sAwBPgNDK3ysbWm3aTE8U");
 
-  RestResult<CreatePayoutOrderResponse> payoutOrderResponseRestResult = dizpayClient.createPayoutOrder(createPayoutOrderRequest);
+    RestResult<CreatePayoutOrderResponse> payoutOrderResponseRestResult = dizpayClient.createPayoutOrder(createPayoutOrderRequest);
 
 #### Parameters
 
@@ -384,11 +381,11 @@ Before you create a payout order, make sure you have enough balance in your wall
 
 Use this procedure to pay a payout
 
-  String number = "payout\_347dfad9-5873-4b43-be4e-24011";
-  PayOrderRequest payOrderRequest = new PayOrderRequest();
-  payOrderRequest.setNumber(number);
+    String number = "payout\_347dfad9-5873-4b43-be4e-24011";  
+    PayOrderRequest payOrderRequest = new PayOrderRequest();
+    payOrderRequest.setNumber(number);
 
-  RestResult<PayOrderResponse> payOrderResponseRestResult = dizpayClient.payOrder(payOrderRequest);
+    RestResult<PayOrderResponse> payOrderResponseRestResult = dizpayClient.payOrder(payOrderRequest);
 
 #### Parameters
 
@@ -422,10 +419,10 @@ Use this procedure to pay a payout
 
 This command retrieves the current transfer rate between two currencies.
 
-  CryptocurrencyRequest cryptocurrencyRequest = new CryptocurrencyRequest();     
-  cryptocurrencyRequest.setCurrencyList("BTC,USDT");
-
-  RestResult restResult = dizpayClient.cryptocurrency(cryptocurrencyRequest);
+    CryptocurrencyRequest cryptocurrencyRequest = new CryptocurrencyRequest();     
+    cryptocurrencyRequest.setCurrencyList("BTC,USDT");
+    
+    RestResult restResult = dizpayClient.cryptocurrency(cryptocurrencyRequest);
 
 #### Parameters
 
