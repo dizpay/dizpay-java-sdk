@@ -28,11 +28,14 @@ The DizPay API requires the following configuration changes before you can use i
 
 Set the App ID and key parameters in `com.dizpay.demo.config.DizPayConfig.java` before your first API call.  Just make sure you you do not accidently reveal this information in any user vieable request or response. :
 
+```java
     public static final String APP\_ID = "YOUR\_APP\_ID";'
     public static final String APP\_KEY = "YOUR\_APP\_KEY&quot";
+```
 
 You should then add the following package to your application. It includes most of the API calls in the SDK.
 
+```java
     package com.dizpay.demo.servlet;
     import com.alibaba.fastjson.JSONObject;
     import com.dizpay.api.DizpayClient;
@@ -104,11 +107,13 @@ You should then add the following package to your application. It includes most 
       }
     }
   }
+```
 
 This sample package has most of the API calls you will need to use DizPay. To use them, just include them in your code like in the following example.
 
 ### Example (_Create change order_)
 
+```java
     publicstaticvoid main(String[] args) {
       DizpayClient dizpayClient =new DefaultDizpayClient(DizPayConfig.APP_ID, DizPayConfig.APP_KEY);
       
@@ -127,6 +132,7 @@ This sample package has most of the API calls you will need to use DizPay. To us
         e.printStackTrace();
       }
     }
+```
 
 ### Rate limiting
 
@@ -173,25 +179,33 @@ To make API calls, you must first create an API instance, and to do that, you mu
 
 The following code will load the necessary SDK dependencies into your application.
 
+```java
     <dependency>
       <groupId>com.dizpay.api</groupId>
       <artifactId>sdk</artifactId>
       <version>1.0.0</version>
     </dependency>
-    
+```
+
+```java
     sdk.jar
+```
 
 ### Starting the DisPay Client
 
 `DizpayClient` serves are your interface to the DizPay API. Create it by passing your app ID and key to the `DefaultDizpayClient` constructor as arguments.
 
+```java
     DizpayClient dizpayClient = new DefaultDizpayClient("YOUR_APP_ID", "YOUR_APP_KEY>);
+```
 
 ### Signature
 
 A **signature** lets you perform non-empty judgements, sort through fields, and MD% encrypt request parameters.
 
+```java
     String signature = DizpaySignature.signature(requestModel, "YOUR_APP_ID", "YOUR_APP_KEY");
+```
 
 #### Tips
 
@@ -209,12 +223,14 @@ A **payment (charge) order** handles outside payment requests. It adds the recei
 
 ### Create a Payment Order
 
+```java
     CreateChargeOrderRequest createChargeOrderRequest = new CreateChargeOrderRequest();
     createChargeOrderRequest.setNumber(UUID.randomUUID().toString()); //order number
     createChargeOrderRequest.setAmount("0.1"); // Sets amount
     createChargeOrderRequest.setCurrencyCode("USDT"); //Sets currency code
     
     RestResult<CreateChargeOrderResponse> chargeOrderResponseRestResult = dizpayClient.createChargeOrder(createChargeOrderRequest);
+```
 
 #### Parameters
 
@@ -247,20 +263,22 @@ Creating a charge order will return the following data
 | fee | Fee set by the merchant. This field is currently unused. |
 | to\_address | Address of the target recipient |
 | txid | The txid of the transaction |
-| status | Order status:
-1 for In progress
-2 for Completed
+| status | Order status:  
+1 for In progress  
+2 for Completed  
 4 for Cancelled |
 
 ### Querying an Order
 
 Return information on an order based on its order number
 
+```java
     String number = "6887623c-e756-4a20-b202-609b5a5b4a5e";  // order number
     QueryOrderRequest queryOrderRequest = new QueryOrderRequest();
     queryOrderRequest.setNumber(number);
 
     RestResult<QueryOrderResponse> queryOrderResponseRestResult = dizpayClient.queryOrder(queryOrderRequest);
+```
 
 #### Parameters
 
@@ -276,7 +294,7 @@ Return information on an order based on its order number
 | --- | --- |
 | number | Order number |
 | currency\_code | Code of the used currency |
-| erc20\_token | 0 for Non-token currency
+| erc20\_token | 0 for Non-token currency  
 1 for Token |
 | amount | Amount paid |
 | paid\_amount | Amount actually received |
@@ -285,20 +303,22 @@ Return information on an order based on its order number
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid for the transaction |
-| status | Order status:
-1 for In progress
-2 for Completed
+| status | Order status:  
+1 for In progress  
+2 for Completed  
 4 for Cancelled |
 
 ### Cancel Order
 
 Cancels the selected order.
 
+```java
     String number = "6887623c-e756-4a20-b202-609b5a5b4a5e";
     CancelOrderRequest cancelOrderRequest = new CancelOrderRequest();
     cancelOrderRequest.setNumber(number);
 
     RestResult<CancelOrderResponse> cancelOrderResponseRestResult = dizpayClient.cancelOrder(cancelOrderRequest);
+```
 
 #### Parameters
 
@@ -314,7 +334,7 @@ Cancels the selected order.
 | --- | --- |
 | number | Order number |
 | currency\_code | Code of the used currency |
-| erc20\_token | 0 for Non-token currency
+| erc20\_token | 0 for Non-token currency  
 1 for Token |
 | amount | Amount paid |
 | paid\_amount | Amount actually received |
@@ -323,9 +343,9 @@ Cancels the selected order.
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid for the transaction |
-| status | Order status:
-1 for In progress
-2 for Completed
+| status | Order status:  
+1 for In progress  
+2 for Completed  
 4 for Cancelled |
 
 ## Payout Order
@@ -336,6 +356,7 @@ A **payout order** processes payouts and withdrawal transactions. Also called a 
 
 Before you create a payout order, make sure you have enough balance in your wallet to cover the transaction.
 
+```java
     CreatePayoutOrderRequest createPayoutOrderRequest = new CreatePayoutOrderRequest();
     createPayoutOrderRequest.setNumber("payout_"+UUID.randomUUID().toString());
     createPayoutOrderRequest.setAmount("0.1";
@@ -343,6 +364,7 @@ Before you create a payout order, make sure you have enough balance in your wall
     createPayoutOrderRequest.setToAddress("1u1dAwvBcF92sAwBPgNDK3ysbWm3aTE8U");
 
     RestResult<CreatePayoutOrderResponse> payoutOrderResponseRestResult = dizpayClient.createPayoutOrder(createPayoutOrderRequest);
+```
 
 #### Parameters
 
@@ -372,20 +394,22 @@ Before you create a payout order, make sure you have enough balance in your wall
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid of the transaction |
-| status | Order status:
-1 for In progress
-2 for Completed
+| status | Order status:  
+1 for In progress  
+2 for Completed  
 4 for Cancelled |
 
 ### Paying a Payout Order
 
 Use this procedure to pay a payout
 
+```java
     String number = "payout\_347dfad9-5873-4b43-be4e-24011";  
     PayOrderRequest payOrderRequest = new PayOrderRequest();
     payOrderRequest.setNumber(number);
 
     RestResult<PayOrderResponse> payOrderResponseRestResult = dizpayClient.payOrder(payOrderRequest);
+```
 
 #### Parameters
 
@@ -401,7 +425,7 @@ Use this procedure to pay a payout
 | --- | --- |
 | number | Order number |
 | currency\_code | Code of the used currency |
-| erc20\_token | 0 for Non-token currency
+| erc20\_token | 0 for Non-token currency  
 1 for Token |
 | amount | Amount paid |
 | paid\_amount | Amount actually received |
@@ -410,19 +434,21 @@ Use this procedure to pay a payout
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid for the transaction |
-| status | Order status:
-1 for In progress
-2 for Completed
+| status | Order status:  
+1 for In progress  
+2 for Completed  
 4 for Cancelled |
 
 ### Cryptocurrency
 
 This command retrieves the current transfer rate between two currencies.
 
+```java
     CryptocurrencyRequest cryptocurrencyRequest = new CryptocurrencyRequest();     
     cryptocurrencyRequest.setCurrencyList("BTC,USDT");
     
     RestResult restResult = dizpayClient.cryptocurrency(cryptocurrencyRequest);
+```
 
 #### Parameters
 
