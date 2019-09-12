@@ -1,5 +1,4 @@
 ```
-
 # DizPay JAVA SDK
 
 This open source JAVA SDK allows you to access the [DizPay](https://www.dizpay.com/) API from your JAVA app.
