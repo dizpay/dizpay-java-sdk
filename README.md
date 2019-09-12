@@ -29,8 +29,8 @@ The DizPay API requires the following configuration changes before you can use i
 Set the App ID and key parameters in `com.dizpay.demo.config.DizPayConfig.java` before your first API call.  Just make sure you you do not accidently reveal this information in any user vieable request or response. :
 
 ```java
-    public static final String APP\_ID = "YOUR\_APP\_ID";'
-    public static final String APP\_KEY = "YOUR\_APP\_KEY&quot";
+    public static final String APP_ID = "YOUR_APP_ID";
+    public static final String APP\_KEY = "YOUR_APP_KEY";
 ```
 
 You should then add the following package to your application. It includes most of the API calls in the SDK.
@@ -263,10 +263,7 @@ Creating a charge order will return the following data
 | fee | Fee set by the merchant. This field is currently unused. |
 | to\_address | Address of the target recipient |
 | txid | The txid of the transaction |
-| status | Order status:  
-1 for In progress  
-2 for Completed  
-4 for Cancelled |
+| status | Order status:  <br />1 for In progress  <br />2 for Completed  <br />4 for Cancelled |
 
 ### Querying an Order
 
@@ -294,8 +291,7 @@ Return information on an order based on its order number
 | --- | --- |
 | number | Order number |
 | currency\_code | Code of the used currency |
-| erc20\_token | 0 for Non-token currency  
-1 for Token |
+| erc20\_token | 0 for Non-token currency  <br />1 for Token |
 | amount | Amount paid |
 | paid\_amount | Amount actually received |
 | extra | extra information |
@@ -303,10 +299,7 @@ Return information on an order based on its order number
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid for the transaction |
-| status | Order status:  
-1 for In progress  
-2 for Completed  
-4 for Cancelled |
+| status | Order status:  <br />1 for In progress  <br />2 for Completed  <br />4 for Cancelled |
 
 ### Cancel Order
 
@@ -334,8 +327,7 @@ Cancels the selected order.
 | --- | --- |
 | number | Order number |
 | currency\_code | Code of the used currency |
-| erc20\_token | 0 for Non-token currency  
-1 for Token |
+| erc20\_token | 0 for Non-token currency  <br />1 for Token |
 | amount | Amount paid |
 | paid\_amount | Amount actually received |
 | extra | Extra information |
@@ -343,10 +335,7 @@ Cancels the selected order.
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid for the transaction |
-| status | Order status:  
-1 for In progress  
-2 for Completed  
-4 for Cancelled |
+| status | Order status:  <br />1 for In progress  <br />2 for Completed  <br />4 for Cancelled |
 
 ## Payout Order
 
@@ -394,10 +383,7 @@ Before you create a payout order, make sure you have enough balance in your wall
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid of the transaction |
-| status | Order status:  
-1 for In progress  
-2 for Completed  
-4 for Cancelled |
+| status | Order status:  <br />1 for In progress  <br />2 for Completed  <br />4 for Cancelled |
 
 ### Paying a Payout Order
 
@@ -425,8 +411,7 @@ Use this procedure to pay a payout
 | --- | --- |
 | number | Order number |
 | currency\_code | Code of the used currency |
-| erc20\_token | 0 for Non-token currency  
-1 for Token |
+| erc20\_token | 0 for Non-token currency  <br />1 for Token |
 | amount | Amount paid |
 | paid\_amount | Amount actually received |
 | extra | extra information |
@@ -434,10 +419,7 @@ Use this procedure to pay a payout
 | to\_address | Address of the target recipient |
 | address | Address of the money source |
 | txid | The txid for the transaction |
-| status | Order status:  
-1 for In progress  
-2 for Completed  
-4 for Cancelled |
+| status | Order status:  <br />1 for In progress  <br />2 for Completed  <br />4 for Cancelled |
 
 ### Cryptocurrency
 
