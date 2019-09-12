@@ -1,4 +1,4 @@
-```
+
 # DizPay JAVA SDK
 
 This open source JAVA SDK allows you to access the [DizPay](https://www.dizpay.com/) API from your JAVA app.
@@ -450,4 +450,4 @@ This command retrieves the current transfer rate between two currencies.
 ## More Help
 
 [API Reference](https://www.dizpay.com/en/docs)
-```
+
