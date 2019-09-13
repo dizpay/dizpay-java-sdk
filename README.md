@@ -56,7 +56,7 @@ You should then add the following package to your application. It includes most 
     import java.io.IOException;
     import java.util.Date;
     import java.util.UUID;
-    \* check out servlet     */
+    // check out servlet     
   
     public class CheckOutServlet extends HttpServlet {
       @Override
