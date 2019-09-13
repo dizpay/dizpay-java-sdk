@@ -73,13 +73,13 @@ You should then add the following package to your application. It includes most 
         }
         // assemble checkoutModel parameters
         
-        CheckOutInvoiceRequest checkOutInvoiceRequest =new CheckOutInvoiceRequest();
+        CheckOutInvoiceRequest checkOutInvoiceRequest = new CheckOutInvoiceRequest();
         checkOutInvoiceRequest.setOrderNumber(DateFormatUtils.format(new Date(), "yyyyMMddHHmmss"));
         checkOutInvoiceRequest.setName("DizPay Inc.");
         checkOutInvoiceRequest.setDescription("Add crypto to your account.");
         checkOutInvoiceRequest.setLogoUrl("https://cdn.shopifycloud.com/hatchful-web/assets/c3a241ae6d1e03513dfed6f5061f4a4b.png");
         checkOutInvoiceRequest.setPayerInfo("email");
-        checkOutInvoiceRequest.setPricingType("fixed\_price");
+        checkOutInvoiceRequest.setPricingType("fixed_price");
         checkOutInvoiceRequest.setCurrency("USD");
         checkOutInvoiceRequest.setRate("huobi");
         checkOutInvoiceRequest.setAmount(amount);
@@ -92,7 +92,7 @@ You should then add the following package to your application. It includes most 
 
       // DizpayClient instance
 
-      DizpayClient dizpayClient =new DefaultDizpayClient(DizPayConfig.APP\_ID, DizPayConfig.APP\_KEY);
+      DizpayClient dizpayClient = new DefaultDizpayClient(DizPayConfig.APP_ID, DizPayConfig.APP_key);
 
       try {
         RestResult<CheckOutInvoiceResponse> responseRestResult = dizpayClient.checkoutInvoice(checkOutInvoiceRequest);
@@ -115,9 +115,9 @@ This sample package has most of the API calls you will need to use DizPay. To us
 
 ```java
     public static void main(String[] args) {
-      DizpayClient dizpayClient =new DefaultDizpayClient(DizPayConfig.APP_ID, DizPayConfig.APP_KEY);
+      DizpayClient dizpayClient = new DefaultDizpayClient(DizPayConfig.APP_ID, DizPayConfig.APP_key);
       
-      CreateChargeOrderRequest createChargeOrderRequest =new CreateChargeOrderRequest();
+      CreateChargeOrderRequest createChargeOrderRequest = new CreateChargeOrderRequest();
       createChargeOrderRequest.setNumber(UUID.randomUUID().toString());
       createChargeOrderRequest.setAmount("0.1");
       createChargeOrderRequest.setCurrencyCode("USDT");
@@ -196,7 +196,7 @@ The following code will load the necessary SDK dependencies into your applicatio
 `DizpayClient` serves are your interface to the DizPay API. Create it by passing your app ID and key to the `DefaultDizpayClient` constructor as arguments.
 
 ```java
-    DizpayClient dizpayClient = new DefaultDizpayClient("YOUR_APP_ID", "YOUR_APP_KEY>);
+    DizpayClient dizpayClient = new DefaultDizpayClient(APP_ID, APP_key>);
 ```
 
 ### Signature
@@ -204,7 +204,7 @@ The following code will load the necessary SDK dependencies into your applicatio
 A **signature** lets you perform non-empty judgements, sort through fields, and MD% encrypt request parameters.
 
 ```java
-    String signature = DizpaySignature.signature(requestModel, "YOUR_APP_ID", "YOUR_APP_KEY");
+    String signature = DizpaySignature.signature(requestModel, APP_ID, APP_key);
 ```
 
 #### Tips
@@ -243,8 +243,7 @@ You can set the following order parameters. You can use them through their set m
 | currency\_code | Yes | Digital currency name | Example: USDT |
 | amount | Yes | Amount of currency |   |
 | signature | Yes | signature |   |
-| erc20\_token | No | 0 for Non-token currency
-1 for Token currency | Default: 0 |
+| erc20\_token | No | 0 for Non-token currency<br />1 for Token currency | Default: 0 |
 | extra | No | Extra information |   |
 | notify\_url | No | Callback URL | Must contain the protocol (http) as well. |
 
@@ -364,8 +363,7 @@ Before you create a payout order, make sure you have enough balance in your wall
 | currency\_code | Yes | Digital currency name | Example: USDT |
 | amount | Yes | Amount of currency |   |
 | signature | Yes | signature |   |
-| erc20\_token | No | 0 for Non-token currency
-1 for Token currency | Default: 0 |
+| erc20\_token | No | 0 for Non-token currency<br />1 for Token currency | Default: 0 |
 | extra | No | Extra information |   |
 | to\_address | No | The address to withdraw the funds in |   |
 
