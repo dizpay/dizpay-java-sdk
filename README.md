@@ -30,7 +30,7 @@ Set the App ID and key parameters in `com.dizpay.demo.config.DizPayConfig.java` 
 
 ```java
     public static final String APP_ID = "YOUR_APP_ID";
-    public static final String APP\_KEY = "YOUR_APP_KEY";
+    public static final String APP_key = "YOUR_APP_KEY";
 ```
 
 You should then add the following package to your application. It includes most of the API calls in the SDK.
@@ -58,14 +58,14 @@ You should then add the following package to your application. It includes most 
     import java.util.UUID;
     \* check out servlet     */
   
-    publicclassCheckOutServletextendsHttpServlet {
+    public class CheckOutServlet extends HttpServlet {
       @Override
-      protectedvoiddoPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
       }
     
       @Override
-      protectedvoiddoGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // accept amount
         String amount = request.getParameter("amount";
         if (StringUtils.isBlank(amount)) {
@@ -114,7 +114,7 @@ This sample package has most of the API calls you will need to use DizPay. To us
 ### Example (_Create change order_)
 
 ```java
-    publicstaticvoid main(String[] args) {
+    public static void main(String[] args) {
       DizpayClient dizpayClient =new DefaultDizpayClient(DizPayConfig.APP_ID, DizPayConfig.APP_KEY);
       
       CreateChargeOrderRequest createChargeOrderRequest =new CreateChargeOrderRequest();
