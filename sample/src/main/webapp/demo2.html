@@ -73,14 +73,13 @@
                   <span class="buybox_headtit">Buy Crypto</span>
                   <div class="buybox_select">
                      <div class="mn_select">
-                        <span class="select-in"><i class="cn"></i><span>人民币</span><i class="fa fa-caret-down ml10"></i></span>
+                        <span class="select-in"><i class="en"></i><span>US Dollar</span><i class="fa fa-caret-down ml10"></i></span>
                         <ul class="select-out">
-                           <li><i class="cn"></i>人民币</li>
-                           <li><i class="en"></i>美元</li>
-                           <li><i class="en"></i>欧元</li>
-                           <li><i class="en"></i>英镑</li>
-                           <li><i class="en"></i>卢布</li>
-                           <li><i class="en"></i>港币</li>
+                           <li><i class="en"></i>US Dollar</li>
+                           <li><i class="en"></i>EUR</li>
+                           <li><i class="en"></i>GBP</li>
+                           <li><i class="en"></i>ruble</li>
+                           <li><i class="en"></i>Hong Kong dollar</li>
                         </ul>
                      </div>
                   </div>
@@ -117,37 +116,37 @@
                <li>
                   <a href="#">
                      <img src="static/assets/images/logo_icon2.png" alt="">
-                     <p>国内最大虚拟币购买网站</p>
+                     <p>The largest virtual currency purchase website in China</p>
                   </a>
                </li>
                <li>
                   <a href="#">
                      <img src="static/assets/images/logo_icon2.png" alt="">
-                     <p>国内最大虚拟币购买网站</p>
+                     <p>The largest virtual currency purchase website in China</p>
                   </a>
                </li>
                <li>
                   <a href="#">
                      <img src="static/assets/images/logo_icon2.png" alt="">
-                     <p>国内最大虚拟币购买网站</p>
+                     <p>The largest virtual currency purchase website in China</p>
                   </a>
                </li>
                <li>
                   <a href="#">
                      <img src="static/assets/images/logo_icon2.png" alt="">
-                     <p>国内最大虚拟币购买网站</p>
+                     <p>The largest virtual currency purchase website in China</p>
                   </a>
                </li>
                <li>
                   <a href="#">
                      <img src="static/assets/images/logo_icon2.png" alt="">
-                     <p>国内最大虚拟币购买网站</p>
+                     <p>The largest virtual currency purchase website in China</p>
                   </a>
                </li>
                <li>
                   <a href="#">
                      <img src="static/assets/images/logo_icon2.png" alt="">
-                     <p>国内最大虚拟币购买网站</p>
+                     <p>The largest virtual currency purchase website in China</p>
                   </a>
                </li>
             </ul>
@@ -262,7 +261,7 @@
 
 
             function animate(t) {
-               p = 100- (t/15)*100; //如果15分钟的话，p= 100- (t/900)*100; 转换为秒后计算
+               p = 100- (t/15)*100; //If 15 minutes，p= 100- (t/900)*100; 转换为秒后计算
                $(".charts").each(function (i, item) {
                   $(item).animate({
                        width: p + "%"
@@ -303,7 +302,7 @@
                });
                e.stopPropagation();
             });
-            // 模拟下拉框
+            // Analog drop down box
             $( ".select-in" ).on("click",function(e) {
                var self = $(this);
                $(this).closest(".mn_select").toggleClass("on");
@@ -335,7 +334,7 @@
             });
 
 
-            // 语言切换
+            // Language switching
             $( ".lng-in" ).on("click",function(e) {
                var self = $(this);
                $(this).closest(".language").toggleClass("on");
