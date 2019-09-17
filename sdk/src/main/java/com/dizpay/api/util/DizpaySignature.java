@@ -70,7 +70,7 @@ public class DizpaySignature {
     public static String MD5Encode(String origin) {
         String resultString = null;
         try {
-            //md5加密
+            //md5 encryption
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] bytes = md.digest(origin.getBytes("utf-8"));
             final char[] HEX_DIGITS = "0123456789abcdef".toCharArray();
@@ -88,8 +88,10 @@ public class DizpaySignature {
     }
 
     /**
-     * Method Purpose: Sort all incoming parameters according to the Unicode code of the field name from small to large (dictionary order), and generate a url parameter string.<br>
-     * Implementation steps: <br>
+     * Method Purpose: 
+     * Sorts all incoming parameters according to field name in Unicode code from small to large, 
+     * and generates a url parameter string.
+     * Implementation steps:
      *
      * @param paraMap    Map object to sort
      * @return
@@ -108,7 +110,7 @@ public class DizpaySignature {
                 String pair = entry.getKey() + "=" + entry.getValue();
                 paraList.add(pair);
             }
-            // Sort all incoming parameters by ASCII code of the field name from small to large (dictionary order)
+            // Sorts all incoming parameters by field name in ASCII from small to large
             Collections.sort(paraList);
             // join "key=value" with "&"
             buff = StringUtils.join(paraList, "&");
