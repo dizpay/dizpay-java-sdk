@@ -26,7 +26,7 @@ public class HttpClientUtil {
         .url(url)
         .build();
     Response response = httpClient.newCall(request).execute();
-    return response.body().string(); // 返回的是string 类型，json的mapper可以直接处理
+    return response.body().string(); // Returns a string that json mapper can process directly
   }
 
   public static String httpPostForStr(String url, String json) throws IOException {
@@ -59,7 +59,7 @@ public class HttpClientUtil {
   }
 
 
-  // 发起HTTP POST请求
+  // Begin HTTP POST request
   public static String sendPost(String url, Map<String, Object> map, String encoding){
     String body = "";
     CloseableHttpResponse response = null;
